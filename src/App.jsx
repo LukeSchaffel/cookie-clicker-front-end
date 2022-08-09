@@ -14,6 +14,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profileState, setProfileState] = useState([])
   const navigate = useNavigate()
+  const [localState,setLocalState] = useState(profileState)
 
   
   const handleLogout = () => {
@@ -30,6 +31,7 @@ const App = () => {
     getProfileState(user.profile)
     .then(state => {
       setProfileState(state)
+      setLocalState(state)
     })
     
   }, [])
@@ -42,6 +44,7 @@ const App = () => {
   }
 
   
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -70,7 +73,7 @@ const App = () => {
           }
         />
       </Routes>
-      <GameArea profile={profileState} refresh={refresh}/>
+      <GameArea profile={profileState} localState={localState} setLocalState={setLocalState} refresh={refresh}/>
     </>
   )
 }
