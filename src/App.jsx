@@ -9,12 +9,14 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import GameArea from './pages/GameArea/GameArea'
 import { getProfileState } from './services/profileService'
+import { buildings } from './services/buildings'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profileState, setProfileState] = useState([])
   const navigate = useNavigate()
-  const [localState,setLocalState] = useState(profileState)
+  const [localState,setLocalState] = useState([])
+  const [buildingsData, setBuildingsData] = useState(buildings)
 
   
   const handleLogout = () => {
@@ -33,8 +35,10 @@ const App = () => {
       setProfileState(state)
       setLocalState(state)
     })
-    
+
   }, [])
+
+  
 
   const refresh = () => {
     getProfileState(user.profile)

@@ -1,15 +1,17 @@
-const buildings = {
-  cursors: {
+const buildings = [
+  {
+    name: 'cursors',
     basePrice: 15,
     baseCPS: .1,
-    currentPrice: null
+    currentPrice: 15
   },
-  grandmas: {
+  {
+    name: 'grandmas',
     basePrice: 100,
     basCPS: 99,
-    currentPrice: null
+    currentPrice: 100
   }
-}
+]
 
 
 export { buildings }
