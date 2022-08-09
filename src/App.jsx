@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -7,11 +7,15 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import GameArea from './pages/GameArea/GameArea'
+import { getProfileState } from './services/profileService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profileState, setProfileState] = useState([])
   const navigate = useNavigate()
 
+  
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -22,6 +26,15 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  useEffect(() => {
+    getProfileState(user.profile)
+    .then(state => {
+      setProfileState(state)
+    })
+    
+  }, [])
+
+  
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -50,6 +63,7 @@ const App = () => {
           }
         />
       </Routes>
+      <GameArea profile={profileState}/>
     </>
   )
 }
