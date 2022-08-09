@@ -27,8 +27,17 @@ const getProfileState = async (profileId) => {
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
   })
-  
   return await res.json()
 }
 
-export { getAllProfiles, addPhoto, getProfileState }
+const addOneCookie = async (profileId) => {
+  const res = await fetch(`${BASE_URL}/${profileId}/add-cookie`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return await res.json()
+}
+
+export { getAllProfiles, addPhoto, getProfileState, addOneCookie }
