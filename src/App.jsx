@@ -34,6 +34,13 @@ const App = () => {
     
   }, [])
 
+  const refresh = () => {
+    getProfileState(user.profile)
+    .then(state => {
+      setProfileState(state)
+    })
+  }
+
   
   return (
     <>
@@ -63,7 +70,7 @@ const App = () => {
           }
         />
       </Routes>
-      <GameArea profile={profileState}/>
+      <GameArea profile={profileState} refresh={refresh}/>
     </>
   )
 }
