@@ -34,9 +34,11 @@ const updateProfile = async (profileId, localState) => {
   const res = await fetch(`${BASE_URL}/${profileId}/update`, {
     method: 'PUT',
     headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+     
     },
-    body: localState
+    body: JSON.stringify(localState) 
   })
   
   return await res.json()
