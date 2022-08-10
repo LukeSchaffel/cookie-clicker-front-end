@@ -10,6 +10,8 @@ import * as authService from './services/authService'
 import GameArea from './pages/GameArea/GameArea'
 import { getProfileState } from './services/profileService'
 import { buildings } from './services/buildings'
+import './App.css'
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -100,7 +102,7 @@ const App = () => {
       building.owned = localState[building.name]
       return building
     })
-    setCurrentTotalCPS(acc)
+    setCurrentTotalCPS(acc > 0 ? acc : 0)
     setBuildingsData(newData)
   }
 
@@ -164,11 +166,13 @@ const App = () => {
           }
         />
       </Routes>
+      <main>
       {user ?
         <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
         currentTotalCPS={currentTotalCPS}
         />
         : null}
+        </main>
     </>
   )
 }

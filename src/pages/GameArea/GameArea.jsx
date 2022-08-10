@@ -46,7 +46,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
       <h1>Game Area</h1>
       <h3>Cookies: {Math.floor(cookies)}</h3>
       <h3>You are Making {currentTotalCPS} cookies per second.</h3>
-      <button className="cookie" onClick={() => handleClick()}>This Is A Cookie</button>
+      <button className="cookie" onClick={() => handleClick()}><img className="cookie" src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" alt="cookie" /></button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
       <BuildingsContainer
         localState={localState}
@@ -55,8 +55,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
         setBuildingsData={setBuildingsData}
         handlePurchase={handlePurchase}
       />
-     
-      <button onClick={() => setBuildingsPrices()}>fuck</button>
+
     </>
   );
 }
