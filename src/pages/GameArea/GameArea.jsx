@@ -43,7 +43,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
 
   return (
     <>
-      <h1>Game Area</h1>
+      <h1>Cookie Clicker. Click the Cookie.</h1>
       <h3>Cookies: {Math.floor(cookies)}</h3>
       <h3>You are Making {currentTotalCPS} cookies per second.</h3>
       <button className="cookie" onClick={() => handleClick()}><img className="cookie" src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" alt="cookie" /></button>
