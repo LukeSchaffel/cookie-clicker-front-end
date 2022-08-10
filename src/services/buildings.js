@@ -9,7 +9,7 @@ const buildings = [
   {
     name: 'grandmas',
     basePrice: 100,
-    basCPS: 99,
+    basCPS: 1,
     currentPrice: 100,
     owned: 0
   }

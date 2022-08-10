@@ -22,7 +22,10 @@ const App = () => {
   const getAndSet = async () => {
     const data = await getProfileState(user.profile)
     const info = data.data
-    setLocalState(info)
+    if (info) {
+      setLocalState(info)
+      
+    }
   }
   useEffect(() => {
     getAndSet(user.profile)
@@ -44,7 +47,6 @@ const App = () => {
           }
         })
       }
-
     }, 1000)
     return () => clearInterval(timer)
   }, [localState])
