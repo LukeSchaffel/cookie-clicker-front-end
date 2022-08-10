@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
 
-const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData }) => {
+const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData, currentTotalCPS }) => {
 
   const handleClick = () => {
     setLocalState(localState => {
@@ -14,7 +14,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
       }
     })
   }
-
+  
   const handleSave = () => {
     updateProfile(localState._id, localState)
   }
@@ -45,7 +45,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
     <>
       <h1>Game Area</h1>
       <h3>Cookies: {Math.floor(cookies)}</h3>
-      <h3>Cursors: {cursors}</h3>
+      <h3>You are Making {currentTotalCPS} cookies per second.</h3>
       <button className="cookie" onClick={() => handleClick()}>This Is A Cookie</button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
       <BuildingsContainer

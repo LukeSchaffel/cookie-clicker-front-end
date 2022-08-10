@@ -17,6 +17,7 @@ const App = () => {
   const navigate = useNavigate()
   const [localState, setLocalState] = useState([])
   const [buildingsData, setBuildingsData] = useState(buildings)
+  const [currentTotalCPS, setCurrentTotalCPS] = useState(0)
 
 
   const getAndSet = async () => {
@@ -92,11 +93,14 @@ const App = () => {
 
 
   const setBuildingsPrices = () => {
+    let acc = 0
     const newData = buildingsData.map((building) => {
+      acc += building.baseCPS * building.owned
       building.currentPrice = Math.ceil(building.basePrice * Math.pow(1.5, localState[building.name]))
       building.owned = localState[building.name]
       return building
     })
+    setCurrentTotalCPS(acc)
     setBuildingsData(newData)
   }
 
@@ -161,7 +165,9 @@ const App = () => {
         />
       </Routes>
       {user ?
-        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} />
+        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
+        currentTotalCPS={currentTotalCPS}
+        />
         : null}
     </>
   )
