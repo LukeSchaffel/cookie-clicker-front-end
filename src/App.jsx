@@ -18,17 +18,19 @@ const App = () => {
   const [localState, setLocalState] = useState([])
   const [buildingsData, setBuildingsData] = useState(buildings)
 
-  
+
   const getAndSet = async () => {
     const data = await getProfileState(user.profile)
     const info = data.data
     if (info) {
       setLocalState(info)
-      
+
     }
   }
   useEffect(() => {
-    getAndSet(user.profile)
+    if (user) {
+      getAndSet(user.profile)
+    }
   }, [])
   useEffect(() => {
     setBuildingsPrices()
@@ -37,11 +39,11 @@ const App = () => {
 
   useEffect(() => {
     const building = buildingsData[0]
-    const { baseCPS, owned} = building
-    const timer = setInterval(()=> {
+    const { baseCPS, owned } = building
+    const timer = setInterval(() => {
       if (localState.cookies) {
-        setLocalState(localState=> {
-          return{
+        setLocalState(localState => {
+          return {
             ...localState,
             cookies: localState.cookies + baseCPS * owned
           }
@@ -60,7 +62,7 @@ const App = () => {
     })
     setBuildingsData(newData)
   }
-  
+
 
 
   const handleLogout = () => {
@@ -81,18 +83,17 @@ const App = () => {
   //     console.log(localState);
   //   })
   // }, [])
- 
 
-  
+
+
 
   const refresh = () => {
     getProfileState(user.profile)
-    .then(state => {
-      setProfileState(state)
-    })
+      .then(state => {
+        setProfileState(state)
+      })
   }
 
- 
 
   return (
     <>
@@ -122,7 +123,9 @@ const App = () => {
           }
         />
       </Routes>
-      <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh}/>
+      {user ?
+        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} />
+        : null}
     </>
   )
 }
