@@ -33,8 +33,7 @@ const App = () => {
 
   const setBuildingsPrices = () => {
     const newData = buildingsData.map((building) => {
-      const numOfBuildings = localState[building]
-      building.currentPrice = building.basePrice * Math.pow(1.5, localState[building.name])
+      building.currentPrice = Math.ceil(building.basePrice * Math.pow(1.5, localState[building.name]))
       return building
     })
     setBuildingsData(newData)
