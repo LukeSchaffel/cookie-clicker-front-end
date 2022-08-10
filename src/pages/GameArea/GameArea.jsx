@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 
 const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData }) => {
+  
   const handleClick = () => {
     setLocalState(localState => {
       return {
@@ -35,11 +36,17 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
   }
 
   let { cursors, cookies, grandmas, id } = localState
-  
-  const handleCursors = () => {
-    const count = cursors
 
-  }
+  useEffect(() => {
+   const timer = setTimeout(() => {
+      console.log('meep')
+    }, 10);
+    return () => clearTimeout(timer)
+  },[])
+  
+  setTimeout(() => {
+    console.log('my ass');
+  }, 100);
 
 
   return (
