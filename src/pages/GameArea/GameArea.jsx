@@ -2,9 +2,10 @@ import { updateProfile } from "../../services/profileService";
 import { buildings } from "../../services/buildings";
 import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
+import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
 
 const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData }) => {
-  
+
   const handleClick = () => {
     setLocalState(localState => {
       return {
@@ -34,11 +35,11 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
       })
     }
   }
-  
-  
+
+
 
   let { cursors, cookies, grandmas, id } = localState
-  
+
 
   return (
     <>
@@ -47,7 +48,14 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
       <h3>Cursors: {cursors}</h3>
       <button className="cookie" onClick={() => handleClick()}>This Is A Cookie</button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
-      <button className="purchase-cursor" onClick={() => { handlePurchase('cursors') }}>Purchase Cursor for {Math.floor(buildingsData[0].currentPrice)} Cookies</button>
+      <BuildingsContainer
+        localState={localState}
+        setLocalState={setLocalState}
+        buildingsData={buildingsData}
+        setBuildingsData={setBuildingsData}
+        handlePurchase={handlePurchase}
+      />
+     
       <button onClick={() => setBuildingsPrices()}>fuck</button>
     </>
   );
