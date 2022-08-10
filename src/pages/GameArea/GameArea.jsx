@@ -34,29 +34,20 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
       })
     }
   }
+  
+  
 
   let { cursors, cookies, grandmas, id } = localState
-
-  useEffect(() => {
-   const timer = setTimeout(() => {
-      console.log('meep')
-    }, 10);
-    return () => clearTimeout(timer)
-  },[])
   
-  setTimeout(() => {
-    console.log('my ass');
-  }, 100);
-
 
   return (
     <>
       <h1>Game Area</h1>
-      <h3>Cookies: {cookies}</h3>
+      <h3>Cookies: {Math.floor(cookies)}</h3>
       <h3>Cursors: {cursors}</h3>
       <button className="cookie" onClick={() => handleClick()}>This Is A Cookie</button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
-      <button className="purchase-cursor" onClick={() => { handlePurchase('cursors') }}>Purchase Cursor for {buildingsData[0].currentPrice} Cookies</button>
+      <button className="purchase-cursor" onClick={() => { handlePurchase('cursors') }}>Purchase Cursor for {Math.floor(buildingsData[0].currentPrice)} Cookies</button>
       <button onClick={() => setBuildingsPrices()}>fuck</button>
     </>
   );

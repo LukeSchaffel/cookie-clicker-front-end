@@ -15,7 +15,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profileState, setProfileState] = useState([])
   const navigate = useNavigate()
-  const [localState, setLocalState] = useState({})
+  const [localState, setLocalState] = useState([])
   const [buildingsData, setBuildingsData] = useState(buildings)
 
   
@@ -31,9 +31,29 @@ const App = () => {
     setBuildingsPrices()
   }, [localState])
 
+
+  useEffect(() => {
+    const building = buildingsData[0]
+    const { baseCPS, owned} = building
+    const timer = setInterval(()=> {
+      if (localState.cookies) {
+        setLocalState(localState=> {
+          return{
+            ...localState,
+            cookies: localState.cookies + baseCPS * owned
+          }
+        })
+      }
+
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [localState])
+
+
   const setBuildingsPrices = () => {
     const newData = buildingsData.map((building) => {
       building.currentPrice = Math.ceil(building.basePrice * Math.pow(1.5, localState[building.name]))
+      building.owned = localState[building.name]
       return building
     })
     setBuildingsData(newData)
