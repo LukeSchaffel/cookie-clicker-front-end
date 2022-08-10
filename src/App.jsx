@@ -15,10 +15,33 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profileState, setProfileState] = useState([])
   const navigate = useNavigate()
-  const [localState,setLocalState] = useState([])
+  const [localState, setLocalState] = useState({})
   const [buildingsData, setBuildingsData] = useState(buildings)
 
   
+  const getAndSet = async () => {
+    const data = await getProfileState(user.profile)
+    const info = data.data
+    setLocalState(info)
+  }
+  useEffect(() => {
+    getAndSet(user.profile)
+  }, [])
+  useEffect(() => {
+    setBuildingsPrices()
+  }, [localState])
+
+  const setBuildingsPrices = () => {
+    const newData = buildingsData.map((building) => {
+      const numOfBuildings = localState[building]
+      building.currentPrice = building.basePrice * Math.pow(1.5, localState[building.name])
+      return building
+    })
+    setBuildingsData(newData)
+  }
+  
+
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -29,14 +52,15 @@ const App = () => {
     setUser(authService.getUser())
   }
 
-  useEffect(() => {
-    getProfileState(user.profile)
-    .then(state => {
-      setProfileState(state)
-      setLocalState(state)
-    })
-
-  }, [])
+  // useEffect(() => {
+  //   getProfileState(user.profile)
+  //   .then(state => {
+  //     setProfileState(state)
+  //     setLocalState(state)
+  //     console.log(localState);
+  //   })
+  // }, [])
+ 
 
   
 
@@ -47,7 +71,7 @@ const App = () => {
     })
   }
 
-  
+ 
 
   return (
     <>
@@ -77,7 +101,7 @@ const App = () => {
           }
         />
       </Routes>
-      <GameArea profile={profileState} localState={localState} setLocalState={setLocalState} refresh={refresh}/>
+      <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh}/>
     </>
   )
 }

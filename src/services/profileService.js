@@ -1,5 +1,5 @@
 import * as tokenService from '../services/tokenService'
-
+import axios from 'axios'
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/profiles`
 
 async function getAllProfiles() {
@@ -20,14 +20,23 @@ async function addPhoto(photoData, profileId) {
   return await res.json()
 }
 
+// const getProfileState = async (profileId) => {
+//   const res = await fetch(`${BASE_URL}/${profileId}`, {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': `Bearer ${tokenService.getToken()}`
+//     },
+//   })
+//   return await res.json()
+// }
 const getProfileState = async (profileId) => {
-  const res = await fetch(`${BASE_URL}/${profileId}`, {
+  const res = await axios.get(`${BASE_URL}/${profileId}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
   })
-  return await res.json()
+  return res
 }
 
 const updateProfile = async (profileId, localState) => {

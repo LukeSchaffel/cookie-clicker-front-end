@@ -3,9 +3,14 @@ import { buildings } from "../../services/buildings";
 import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 
-const GameArea = ({ profile, refresh, localState, setLocalState }) => {
-  const [buildingsData, setBuildingsData] = useState(buildings)
+const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData }) => {
+  // const [buildingsData, setBuildingsData] = useState(buildings)
   
+
+  // useEffect(()=> {
+  //  const newShit = setBuildingsPrices()
+  //  console.log(newShit);
+  // })
 
   const handleClick = () => {
     setLocalState(localState => {
@@ -21,17 +26,11 @@ const GameArea = ({ profile, refresh, localState, setLocalState }) => {
   }
 
   const handlePurchase = (building) => {
-    let current 
-    for (let i = 0; i < buildingsData.length; i++) {
-      const element = buildingsData[i];
-      if (element.name === building) {
-        current = element
-        break
-      }
-    }
-    console.log(current);
-    const price = current.currentPrice
-
+    const current = buildingsData.filter((item) => {
+      return item.name === building
+    })
+    
+    const price = current[0].currentPrice
     if (localState.cookies >= price) {
       localState[building]++
       setLocalState((localState) => {
@@ -41,24 +40,21 @@ const GameArea = ({ profile, refresh, localState, setLocalState }) => {
         }
       })
     }
-    console.log(localState);
-  }
-  const setBuildingsPrices =  () => {
-    for (let i = 0; i < buildingsData.length; i++) {
-      const building = buildingsData[i];
-      building.currentPrice = building.basePrice * Math.pow(1.5, localState[building.name])
-      
-    }
-    setBuildingsData((buildingsData) => {
-      return {
-        ...buildingsData
-      }
-    })
-   console.log(buildingsData);
+    
   }
 
- 
   
+  // const setBuildingsPrices = () => {
+  //   return buildingsData.map((building) => {
+  //     return building.price = building.basePrice * Math.pow(1.5, localState[building.name])
+  //   })
+    
+  // }
+
+  
+
+  
+
   let { cursors, cookies, grandmas, id } = localState
   return (
     <>
@@ -66,8 +62,8 @@ const GameArea = ({ profile, refresh, localState, setLocalState }) => {
       <h3>Cookies: {cookies}</h3>
       <button className="cookie" onClick={() => handleClick()}>This Is A Cookie</button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
-      <button className="purchase-cursor" onClick={() => { handlePurchase('cursors') }}>Purchase Cursor</button>
-      <button onClick={()=> setBuildingsPrices() }>fuck</button>
+      <button className="purchase-cursor" onClick={() => { handlePurchase('cursors') }}>Purchase Cursor for {buildingsData[0].currentPrice} Cookies</button>
+      <button onClick={() => setBuildingsPrices()}>fuck</button>
     </>
   );
 }
