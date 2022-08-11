@@ -53,7 +53,11 @@ const App = () => {
               cookies: localState.cookies + 
               (buildingsData[0].currentCPS * buildingsData[0].owned) +
               (buildingsData[1].currentCPS * buildingsData[1].owned) +
-             (buildingsData[2].currentCPS * buildingsData[2].owned)
+             (buildingsData[2].currentCPS * buildingsData[2].owned) +
+             (buildingsData[3].currentCPS * buildingsData[3].owned) +
+             (buildingsData[4].currentCPS * buildingsData[4].owned) +
+             (buildingsData[5].currentCPS * buildingsData[5].owned) +
+             (buildingsData[6].currentCPS * buildingsData[6].owned)
             }
           })
         }
@@ -93,18 +97,6 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-
-  // useEffect(() => {
-  //   getProfileState(user.profile)
-  //   .then(state => {
-  //     setProfileState(state)
-  //     setLocalState(state)
-  //     console.log(localState);
-  //   })
-  // }, [])
-
-
-
 
   const refresh = () => {
     getProfileState(user.profile)
