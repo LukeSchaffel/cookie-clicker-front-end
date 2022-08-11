@@ -1,6 +1,7 @@
 import Building from "../Building/Building";
 
-const BuildingsContainer = ({
+const BuildingsContainer = (
+  {
   buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData, handlePurchase
 }) => {
   return (

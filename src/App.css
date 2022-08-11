@@ -10,6 +10,13 @@ main {
   margin: 0 auto;
 }
 
+.buildings-container {
+  display: flex;
+  padding: 10%;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 h3 {
   color: green
