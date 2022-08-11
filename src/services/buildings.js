@@ -3,8 +3,19 @@ const buildings = [
     name: 'cursors',
     basePrice: 15,
     baseCPS: .1,
+    currentCPS: .1,
     currentPrice: 15,
-    owned: 0
+    owned: 0,
+    upgrades: [{
+      name: 'reinforced index finger',
+      condition: () => this.owned > 0,
+      basePrice: 100,
+      effect: () => this.currentCPS = this.currentCPS * 2
+    }, {
+      name: 'carpal tunnel prevention cream',
+      condition: () => this.owned > 0,
+      basePrice: 500
+    }]
   },
   {
     name: 'grandmas',

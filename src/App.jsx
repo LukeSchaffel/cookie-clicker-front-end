@@ -39,7 +39,8 @@ const App = () => {
     setBuildingsPrices()
   }, [localState])
 
-  //cursors
+  console.log(buildingsData[0]);
+  //make cookies from buildings
   useEffect(() => {
       const building = buildingsData[0];
       const { baseCPS, owned } = building
@@ -48,49 +49,16 @@ const App = () => {
           setLocalState(localState => {
             return {
               ...localState,
-              cookies: localState.cookies + baseCPS * owned
+              cookies: localState.cookies + 
+              (buildingsData[0].currentCPS * buildingsData[0].owned) +
+              (buildingsData[1].currentCPS * buildingsData[1].owned) +
+             (buildingsData[2].currentCPS * buildingsData[2].owned)
             }
           })
         }
       }, 1000)
       return () => clearInterval(timer)
   }, [localState])
-
-  //grandmas
-  useEffect(() => {
-      const building = buildingsData[1];
-      const { baseCPS, owned } = building
-      const timer = setInterval(() => {
-        if (localState.cookies && owned > 0) {
-          setLocalState(localState => {
-            return {
-              ...localState,
-              cookies: localState.cookies + baseCPS * owned
-            }
-          })
-        }
-      }, 1000)
-      return () => clearInterval(timer)
-  }, [localState])
-
- 
-  //farms
-  useEffect(() => {
-      const building = buildingsData[2];
-      const { baseCPS, owned } = building
-      const timer = setInterval(() => {
-        if (localState.cookies) {
-          setLocalState(localState => {
-            return {
-              ...localState,
-              cookies: localState.cookies + baseCPS * owned
-            }
-          })
-        }
-      }, 1000)
-      return () => clearInterval(timer)
-  }, [localState])
-
 
 
 
