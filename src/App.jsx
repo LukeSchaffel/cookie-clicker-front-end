@@ -36,7 +36,7 @@ const App = () => {
     }
   }, [])
   useEffect(() => {
-    setBuildingsPrices()
+    updateBuildingInfo()
   }, [localState])
 
  
@@ -67,7 +67,7 @@ const App = () => {
 
 
 
-  const setBuildingsPrices = () => {
+  const updateBuildingInfo = () => {
     let acc = 0
     const newData = buildingsData.map((building) => {
       const owned = localState[building.name] > 0 ? localState[building.name] : 0
@@ -105,7 +105,6 @@ const App = () => {
       })
   }
 
-
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -136,7 +135,7 @@ const App = () => {
       </Routes>
       <main>
       {user ?
-        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} setBuildingsPrices={setBuildingsPrices} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
+        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
         currentTotalCPS={currentTotalCPS}
         />
         : null}

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
 
-const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices, setBuildingsData, currentTotalCPS }) => {
+const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS }) => {
 
   const handleClick = () => {
     setLocalState(localState => {
@@ -34,6 +34,10 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsPrices
         }
       })
     }
+  }
+
+  const handlePurchaseUpgrade = () => {
+    
   }
 
 
