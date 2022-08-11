@@ -39,13 +39,14 @@ const App = () => {
     setBuildingsPrices()
   }, [localState])
 
-  console.log(buildingsData[0]);
+ 
   //make cookies from buildings
   useEffect(() => {
-      const building = buildingsData[0];
-      const { baseCPS, owned } = building
-      const timer = setInterval(() => {
-        if (localState.cookies && owned > 0) {
+    const building = buildingsData[0];
+    const { baseCPS, owned } = building
+    
+    const timer = setInterval(() => {
+      if (localState.cookies && owned > 0) {
           setLocalState(localState => {
             return {
               ...localState,
