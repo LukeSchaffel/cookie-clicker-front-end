@@ -8,6 +8,7 @@ main {
   width: 300px;
   border: none;
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 .buildings-container {
@@ -16,6 +17,10 @@ main {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.save-btn {
+  color: red;
 }
 
 h3 {
