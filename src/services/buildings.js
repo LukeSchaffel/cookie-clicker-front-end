@@ -8,14 +8,18 @@ const buildings = [
     owned: 0,
     upgrades: [{
       name: 'reinforced index finger',
-      owned: false,
+      owned: true,
+      active: false, 
       condition: () => buildings[0].owned > 0,
       basePrice: 100,
       effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2
     }, {
       name: 'carpal tunnel prevention cream',
+      owned: false,
+      active: false,
       condition: () => buildings[0].owned > 0,
-      basePrice: 500
+      basePrice: 500,
+      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2
     }]
   },
   {
@@ -24,7 +28,8 @@ const buildings = [
     baseCPS: 1,
     currentCPS: 1,
     currentPrice: 100,
-    owned: 0
+    owned: 0,
+    upgrades: [{}]
   },
   {
     name: 'farms',
@@ -32,7 +37,8 @@ const buildings = [
     baseCPS: 8,
     currentCPS: 8,
     currentPrice: 1100,
-    owned: 0
+    owned: 0,
+    upgrades: [{}]
   }
 ]
 

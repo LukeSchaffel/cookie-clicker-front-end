@@ -66,9 +66,15 @@ const App = () => {
   const setBuildingsPrices = () => {
     let acc = 0
     const newData = buildingsData.map((building) => {
-      acc += building.baseCPS * building.owned
       building.currentPrice = Math.ceil(building.basePrice * Math.pow(1.5, localState[building.name]))
       building.owned = localState[building.name]
+      building.upgrades.forEach((upgrade, i) => {
+        if (upgrade.owned && !upgrade.active) {
+          upgrade.effect()
+          upgrade.active = true
+        }
+      })
+      acc += building.currentCPS * building.owned
       return building
     })
     setCurrentTotalCPS(acc > 0 ? acc : 0)
