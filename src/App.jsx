@@ -20,6 +20,7 @@ const App = () => {
   const [localState, setLocalState] = useState([])
   const [buildingsData, setBuildingsData] = useState(buildings)
   const [currentTotalCPS, setCurrentTotalCPS] = useState(0)
+  const [clickStrength, setClickStrength] = useState(1)
 
 
   const getAndSet = async () => {
@@ -77,6 +78,7 @@ const App = () => {
             upgrade.effect()
             upgrade.active = true
           }
+          
         })
         building.owned = owned
         acc += building.currentCPS * owned
@@ -140,6 +142,7 @@ const App = () => {
       {user ?
         <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
         currentTotalCPS={currentTotalCPS}
+        clickStrength={clickStrength}
         />
         : null}
         </main>

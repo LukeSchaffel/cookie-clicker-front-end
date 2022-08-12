@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
 
-const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS }) => {
+const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength }) => {
 
   const handleClick = () => {
     setLocalState(localState => {
@@ -52,6 +52,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
       <h1>Cookie Clicker. Click the Cookie.</h1>
       <h3>Cookies: {Math.floor(cookies)}</h3>
       <h3>You are Making {currentTotalCPS} cookies per second.</h3>
+      <h3>Click Strength: {clickStrength}</h3>
       <button className="cookie" onClick={() => handleClick()}><img className="cookie" src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" alt="cookie" /></button>
       <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
       <BuildingsContainer
