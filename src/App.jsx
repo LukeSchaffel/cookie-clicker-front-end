@@ -27,14 +27,13 @@ const App = () => {
     const info = data.data
     if (info) {
       setLocalState(info)
-
     }
   }
   useEffect(() => {
     if (user) {
       getAndSet(user.profile)
     }
-  }, [])
+  }, [user])
   useEffect(() => {
     updateBuildingInfo()
   }, [localState])
@@ -43,10 +42,10 @@ const App = () => {
   //make cookies from buildings
   useEffect(() => {
     const building = buildingsData[0];
-    const { baseCPS, owned } = building
+    const { baseCPS, } = building
     
     const timer = setInterval(() => {
-      if (localState.cookies && owned > 0) {
+      if (localState) {
           setLocalState(localState => {
             return {
               ...localState,
@@ -106,6 +105,9 @@ const App = () => {
       })
   }
 
+
+
+ 
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
