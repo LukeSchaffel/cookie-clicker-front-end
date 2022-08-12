@@ -68,22 +68,25 @@ const App = () => {
 
 
   const updateBuildingInfo = () => {
-    let acc = 0
-    const newData = buildingsData.map((building) => {
-      const owned = localState[building.name] > 0 ? localState[building.name] : 0
-      building.currentPrice = owned > 0 ? Math.ceil(building.basePrice * Math.pow(1.5, owned)) : building.basePrice
-      building.upgrades.forEach((upgrade, i) => {
-        if (upgrade.owned && !upgrade.active) {
-          upgrade.effect()
-          upgrade.active = true
-        }
+      let acc = 0
+      const newData = buildingsData.map((building) => {
+        const owned = localState[building.name] > 0 ? localState[building.name] : 0
+        building.currentPrice = owned > 0 ? Math.ceil(building.basePrice * Math.pow(1.5, owned)) : building.basePrice
+        building.upgrades.forEach((upgrade, i) => {
+          if (localState.upgrades?.includes(upgrade.name)) {
+            upgrade.owned = true
+          }
+          if (upgrade.owned && !upgrade.active) {
+            upgrade.effect()
+            upgrade.active = true
+          }
+        })
+        building.owned = owned
+        acc += building.currentCPS * owned
+        return building
       })
-      building.owned = owned
-      acc += building.currentCPS * owned
-      return building
-    })
-    setCurrentTotalCPS(acc > 0 ? acc : 0)
-    setBuildingsData(newData)
+      setCurrentTotalCPS(acc > 0 ? acc : 0)
+      setBuildingsData(newData)
   }
 
 
