@@ -36,7 +36,28 @@ const buildings = [
     currentCPS: 1,
     currentPrice: 100,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'forwards from grandma',
+      owned: false,
+      active: false,
+      condition: () => buildings[1].owned > 1,
+      basePrice: 1000,
+      effect: () => buildings[1].currentCPS = buildings[1].currentCPS * 2
+    }, {
+      name: 'steel-plated rolling pins',
+      owned: false,
+      active: false,
+      condition: () => buildings[1].owned > 5,
+      basePrice: 5000,
+      effect: () => buildings[1].currentCPS = buildings[1].currentCPS * 2
+    }, {
+      name: 'lubricated dentures',
+      owned: false,
+      active: false,
+      condition: () => buildings[1].owned > 25,
+      basePrice: 50000,
+      effect: () => buildings[1].currentCPS = buildings[1].currentCPS * 2
+    },]
   },
   {
     name: 'farms',
