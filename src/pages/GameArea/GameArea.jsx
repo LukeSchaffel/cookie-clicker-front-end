@@ -37,7 +37,10 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
   }
 
   const handlePurchaseUpgrade = (upgrade) => {
-    console.log('triggerd =p');
+    if (!(localState.upgrades.includes(upgrade))) {
+      localState.upgrades.push(upgrade)
+    } 
+    console.log(localState.upgrades);
   }
 
 
