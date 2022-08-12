@@ -37,8 +37,14 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
   }
 
   const handlePurchaseUpgrade = (upgrade) => {
-    if (!(localState.upgrades.includes(upgrade.name))) {
+    if (!(localState.upgrades.includes(upgrade.name)) && localState.cookies >= upgrade.basePrice) {
       localState.upgrades.push(upgrade.name)
+      localState.cookies -= upgrade.basePrice
+      setLocalState(localState => {
+        return {
+          ...localState
+        }
+      })
     } 
   }
 

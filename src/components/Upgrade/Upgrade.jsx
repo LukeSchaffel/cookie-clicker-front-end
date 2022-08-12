@@ -2,11 +2,12 @@ const Upgrade = ({upgrade, handlePurchaseUpgrade}) => {
 
   return ( 
   <>
-    <button 
+  {!upgrade.owned ? <button 
     onClick={() => handlePurchaseUpgrade(upgrade)}
     className="upgrade-btn">
-      {upgrade.name}
-    </button>
+      {upgrade.name} for {upgrade.basePrice} cookies
+    </button>: null}
+    
   </> 
   );
 }
