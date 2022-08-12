@@ -77,8 +77,10 @@ const App = () => {
             upgrade.owned = true
             upgrade.effect()
             upgrade.active = true
+            if (upgrade.modifyClickStrength) {
+              setClickStrength(clickStrength * 2)
+            }
           }
-          
         })
         building.owned = owned
         acc += building.currentCPS * owned

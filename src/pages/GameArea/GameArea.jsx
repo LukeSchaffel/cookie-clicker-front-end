@@ -10,7 +10,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
     setLocalState(localState => {
       return {
         ...localState,
-        cookies: cookies + 1
+        cookies: cookies + (1 * clickStrength )
       }
     })
   }

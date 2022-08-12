@@ -12,21 +12,24 @@ const buildings = [
       active: false,
       condition: () => buildings[0].owned > 0,
       basePrice: 100,
-      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2
+      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2,
+      modifyClickStrength: true
     }, {
       name: 'carpal tunnel prevention cream',
       owned: false,
       active: false,
       condition: () => buildings[0].owned > 0,
       basePrice: 500,
-      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2
+      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2,
+      modifyClickStrength: true
     }, {
       name: 'ambidextrous',
       owned: false,
       active: false,
       condition: () => buildings[0].owned > 10,
       basePrice: 10000,
-      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2
+      effect: () => buildings[0].currentCPS = buildings[0].currentCPS * 2,
+      modifyClickStrength: true
     }]
   },
   {
