@@ -1,8 +1,10 @@
-const Upgrade = ({upgrade}) => {
+const Upgrade = ({upgrade, handlePurchaseUpgrade}) => {
 
   return ( 
   <>
-    <button className="upgrade-btn">
+    <button 
+    onClick={() => handlePurchaseUpgrade(upgrade)}
+    className="upgrade-btn">
       {upgrade.name}
     </button>
   </> 

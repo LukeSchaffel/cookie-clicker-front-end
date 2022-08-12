@@ -1,7 +1,7 @@
 import UpgradesContainer from "../UpgradesContainer/UpgradesContainer";
 
-const Building = ({ building, handlePurchase }) => {
-  
+const Building = ({ building, handlePurchase, handlePurchaseUpgrade }) => {
+
   return (
     <>
       <article>
@@ -10,7 +10,10 @@ const Building = ({ building, handlePurchase }) => {
         </header>
         <button className="purchase-cursor" onClick={() => { handlePurchase(building.name) }}> Purchase {building.name} for {Math.floor(building.currentPrice)} Cookies</button>
         <div>
-          <UpgradesContainer upgrades={building.upgrades}/>
+          <UpgradesContainer
+            upgrades={building.upgrades}
+            handlePurchaseUpgrade={handlePurchaseUpgrade}
+          />
         </div>
       </article>
     </>

@@ -36,8 +36,8 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
     }
   }
 
-  const handlePurchaseUpgrade = () => {
-    
+  const handlePurchaseUpgrade = (upgrade) => {
+    console.log('triggerd =p');
   }
 
 
@@ -58,6 +58,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
         buildingsData={buildingsData}
         setBuildingsData={setBuildingsData}
         handlePurchase={handlePurchase}
+        handlePurchaseUpgrade={handlePurchaseUpgrade}
       />
 
     </>
