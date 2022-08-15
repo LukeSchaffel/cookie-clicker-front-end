@@ -7,7 +7,7 @@ const UpgradesContainer = ({ upgrades, handlePurchaseUpgrade }) => {
 
   return (
     <>
-      <article>
+      <article className="upgrades-container">
         <header>
           <h3>Upgrades:</h3>
         </header>

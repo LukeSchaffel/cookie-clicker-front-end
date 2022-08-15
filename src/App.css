@@ -19,6 +19,15 @@ main {
   flex-wrap: wrap;
 }
 
+.upgrades-container ul {
+  list-style: none;
+  text-align: left;
+}
+
+.upgrades-container li {
+  margin: 10px 0;
+}
+
 .save-btn {
   color: red;
 }

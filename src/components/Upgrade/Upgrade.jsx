@@ -5,7 +5,7 @@ const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
   const { owned, condition } = upgrade
   const [available, setAvailable]= useState(condition())
 
-  
+
   return (
     <>
       {!owned ?
@@ -28,10 +28,13 @@ const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
 
           }
         </div>
-
-
         :
-        null
+
+        <div>
+          <h6>
+            {upgrade.name}
+          </h6>
+        </div>
       }
 
     </>
