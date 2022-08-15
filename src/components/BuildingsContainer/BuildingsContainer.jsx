@@ -14,6 +14,7 @@ const BuildingsContainer = (
             building={building}
             handlePurchase={handlePurchase}
             handlePurchaseUpgrade={handlePurchaseUpgrade}
+            localState={localState}
           />
         ))}
       </div>

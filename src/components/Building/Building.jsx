@@ -1,6 +1,6 @@
 import UpgradesContainer from "../UpgradesContainer/UpgradesContainer";
 
-const Building = ({ building, handlePurchase, handlePurchaseUpgrade }) => {
+const Building = ({ building, handlePurchase, handlePurchaseUpgrade, localState }) => {
 
   return (
     <>
@@ -13,6 +13,7 @@ const Building = ({ building, handlePurchase, handlePurchaseUpgrade }) => {
           <UpgradesContainer
             upgrades={building.upgrades}
             handlePurchaseUpgrade={handlePurchaseUpgrade}
+            localState={localState}
           />
         </div>
       </article>
