@@ -159,7 +159,28 @@ const buildings = [
     currentCPS: 1400,
     currentPrice: 1400000,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'taller tellers',
+      owned: false,
+      active: false,
+      condition: () => buildings[5].owned > 1,
+      basePrice:14000000,
+      effect: () => buildings[5].currentCPS = buildings[5].currentCPS * 2
+    },{
+      name: 'scissor-resistant credit cards',
+      owned: false,
+      active: false,
+      condition: () => buildings[5].owned > 5,
+      basePrice: 70000000,
+      effect: () => buildings[5].currentCPS = buildings[5].currentCPS * 2
+    },{
+      name: 'acid-proof vaults',
+      owned: false,
+      active: false,
+      condition: () => buildings[5].owned > 25,
+      basePrice: 700000000,
+      effect: () => buildings[5].currentCPS = buildings[5].currentCPS * 2
+    }]
   },
   {
     name: 'temples',
