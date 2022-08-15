@@ -69,7 +69,28 @@ const buildings = [
     currentCPS: 8,
     currentPrice: 1100,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'cheap hoes',
+      owned: false,
+      active: false,
+      condition: () => buildings[2].owned > 1,
+      basePrice: 11000,
+      effect: () => buildings[2].currentCPS = buildings[2].currentCPS * 2
+    },{
+      name: 'fertilizer',
+      owned: false,
+      active: false,
+      condition: () => buildings[2].owned > 5,
+      basePrice: 55000,
+      effect: () => buildings[2].currentCPS = buildings[2].currentCPS * 2
+    },{
+      name: 'cookie trees',
+      owned: false,
+      active: false,
+      condition: () => buildings[2].owned > 25,
+      basePrice: 550000,
+      effect: () => buildings[2].currentCPS = buildings[2].currentCPS * 2
+    }]
   },
   {
     name: 'mines',
@@ -78,7 +99,28 @@ const buildings = [
     currentCPS: 47,
     currentPrice: 12000,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'sugar gas',
+      owned: false,
+      active: false,
+      condition: () => buildings[3].owned > 1,
+      basePrice: 120000,
+      effect: () => buildings[3].currentCPS = buildings[3].currentCPS * 2
+    },{
+      name: 'megadrill',
+      owned: false,
+      active: false,
+      condition: () => buildings[3].owned > 5,
+      basePrice: 600000,
+      effect: () => buildings[3].currentCPS = buildings[3].currentCPS * 2
+    },{
+      name: 'ultradrill',
+      owned: false,
+      active: false,
+      condition: () => buildings[3].owned > 25,
+      basePrice: 6000000,
+      effect: () => buildings[3].currentCPS = buildings[3].currentCPS * 2
+    }]
   },
   {
     name: 'factories',
@@ -87,7 +129,28 @@ const buildings = [
     currentCPS: 260,
     currentPrice: 130000,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'sturdier conveyor belts',
+      owned: false,
+      active: false,
+      condition: () => buildings[4].owned > 1,
+      basePrice: 1300000,
+      effect: () => buildings[4].currentCPS = buildings[4].currentCPS * 2
+    },{
+      name: 'child labor',
+      owned: false,
+      active: false,
+      condition: () => buildings[4].owned > 5,
+      basePrice: 6500000,
+      effect: () => buildings[4].currentCPS = buildings[4].currentCPS * 2
+    },{
+      name: 'sweatshop',
+      owned: false,
+      active: false,
+      condition: () => buildings[4].owned > 25,
+      basePrice: 65000000,
+      effect: () => buildings[4].currentCPS = buildings[4].currentCPS * 2
+    }]
   },
   {
     name: 'banks',
