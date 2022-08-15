@@ -10,7 +10,6 @@ const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
 
   return (
     <>
-      {!owned ?
         <div>
           {available ? 
           <Button
@@ -25,19 +24,10 @@ const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
             
             className="upgrade-btn">
             {upgrade.name} for {upgrade.basePrice} cookies
-          </Button> 
-
-
+          </Button>
           }
         </div>
-        :
-
-        <div>
-          <h6>
-            {upgrade.name}
-          </h6>
-        </div>
-      }
+      
 
     </>
   );
