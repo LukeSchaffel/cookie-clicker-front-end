@@ -61,7 +61,7 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
       <h3>You are Making {currentTotalCPS} cookies per second.</h3>
       <h3>Click Strength: {clickStrength}</h3>
       <button className="cookie" onClick={() => handleClick()}><img className="cookie" src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" alt="cookie" /></button>
-      <button className="save-btn" onClick={() => handleSave()}>SAVE</button>
+      <Button className="save-btn" onClick={() => handleSave()}>SAVE</Button>
       <BuildingsContainer
         localState={localState}
         setLocalState={setLocalState}

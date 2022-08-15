@@ -14,9 +14,20 @@ main {
 .buildings-container {
   display: flex;
   padding: 10%;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.building {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 3px;
+  text-align: left;
+}
+
+.info-div {
+
 }
 
 .upgrades-container ul {
