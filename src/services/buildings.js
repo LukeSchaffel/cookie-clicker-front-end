@@ -189,7 +189,28 @@ const buildings = [
     currentCPS: 7800,
     currentPrice: 20000000,
     owned: 0,
-    upgrades: [{}]
+    upgrades: [{
+      name: 'golden idols',
+      owned: false,
+      active: false,
+      condition: () => buildings[6].owned > 1,
+      basePrice: 200000000,
+      effect: () => buildings[6].currentCPS = buildings[6].currentCPS * 2
+    },{
+      name: 'sacrifices',
+      owned: false,
+      active: false,
+      condition: () => buildings[6].owned > 5,
+      basePrice: 1000000000,
+      effect: () => buildings[6].currentCPS = buildings[6].currentCPS * 2
+    },{
+      name: 'delicious blessing',
+      owned: false,
+      active: false,
+      condition: () => buildings[6].owned > 25,
+      basePrice: 10000000000,
+      effect: () => buildings[6].currentCPS = buildings[6].currentCPS * 2
+    }]
   },
 ]
 
