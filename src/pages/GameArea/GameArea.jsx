@@ -3,6 +3,7 @@ import { buildings } from "../../services/buildings";
 import { useState, useEffect } from "react";
 import { getProfileState } from "../../services/profileService";
 import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
+import  Button from "react-bootstrap/Button";
 
 const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength }) => {
 
@@ -69,7 +70,6 @@ const GameArea = ({ buildingsData, localState, setLocalState, setBuildingsData, 
         handlePurchase={handlePurchase}
         handlePurchaseUpgrade={handlePurchaseUpgrade}
       />
-
     </>
   );
 }

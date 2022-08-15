@@ -1,15 +1,41 @@
-const Upgrade = ({upgrade, handlePurchaseUpgrade}) => {
+import { Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
-  return ( 
-  <>
-  {!upgrade.owned ? <button 
-    onClick={() => handlePurchaseUpgrade(upgrade)}
-    className="upgrade-btn">
-      {upgrade.name} for {upgrade.basePrice} cookies
-    </button>: null}
-    
-  </> 
+const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
+  const { owned, condition } = upgrade
+  const [available, setAvailable]= useState(condition())
+
+  
+  return (
+    <>
+      {!owned ?
+        <div>
+          {available ? 
+          <Button
+            variant='outline-success'
+            onClick={() => handlePurchaseUpgrade(upgrade)}
+            className="upgrade-btn">
+            {upgrade.name} for {upgrade.basePrice} cookies
+          </Button> 
+          :
+          <Button
+            variant='outline-danger'
+            onClick={() => handlePurchaseUpgrade(upgrade)}
+            className="upgrade-btn">
+            {upgrade.name} for {upgrade.basePrice} cookies
+          </Button> 
+
+
+          }
+        </div>
+
+
+        :
+        null
+      }
+
+    </>
   );
 }
- 
+
 export default Upgrade;

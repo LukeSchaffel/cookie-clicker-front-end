@@ -11,6 +11,7 @@ import GameArea from './pages/GameArea/GameArea'
 import { getProfileState } from './services/profileService'
 import { buildings } from './services/buildings'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
