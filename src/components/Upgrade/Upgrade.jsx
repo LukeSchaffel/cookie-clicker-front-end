@@ -1,11 +1,16 @@
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
+const Upgrade = ({ upgrade, handlePurchaseUpgrade, localState }) => {
   const { owned, condition } = upgrade
   const [available, setAvailable]= useState(false)
+
   useEffect(() => {
-    setAvailable(condition())
+    if (condition() && upgrade.basePrice <= localState.cookies) {
+      setAvailable(true)
+    } else {
+      setAvailable(false)
+    }
   })
 
   return (

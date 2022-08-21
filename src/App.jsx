@@ -152,6 +152,7 @@ const App = () => {
         </main>
         :
         <main>
+          
           <WelcomePage />
         </main>
       }

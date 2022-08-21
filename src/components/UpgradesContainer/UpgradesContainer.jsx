@@ -37,6 +37,7 @@ const UpgradesContainer = ({ upgrades, handlePurchaseUpgrade, localState }) => {
                   <Upgrade
                     upgrade={upgrade}
                     handlePurchaseUpgrade={handlePurchaseUpgrade}
+                    localState={localState}
                   />
                 </li>
               ))}
