@@ -6,7 +6,6 @@ import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap'
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
-
       <Navbar expand="lg" className='nav' >
         <Container >
           <Navbar.Brand href="/" style={{ color: 'black' }}>
@@ -34,27 +33,8 @@ const NavBar = ({ user, handleLogout }) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
-
     </>
   )
 }
 
 export default NavBar
-
-{/* // <nav>
-//   <ul>
-//     <li>Welcome, {user.name}</li>
-//     {/* <li><Link to="/profiles">Profiles</Link></li> */}
-//     <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-//     <li><Link to="/changePassword">Change Password</Link></li>
-//   </ul>
-// </nav>
-
-// <nav>
-//   <ul>
-//     <li><Link to="/login">Log In</Link></li>
-//     <li><Link to="/signup">Sign Up</Link></li>
-//   </ul>
-// </nav> */}
