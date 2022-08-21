@@ -5,8 +5,8 @@ import { getProfileState } from "../../services/profileService";
 import BuildingsContainer from "../../components/BuildingsContainer/BuildingsContainer";
 import Button from "react-bootstrap/Button";
 
-const GameArea = ({ 
-  buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength 
+const GameArea = ({
+  buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength
 }) => {
 
   const [autoSave, setAutoSave] = useState(true)
@@ -53,22 +53,37 @@ const GameArea = ({
     }
   }
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (autoSave) {
+        handleSave()
+        console.log('...30 second timer triggered');
+      }
+    }, 30000)
+    return () => clearInterval(timer)
+  }, [autoSave])
 
 
-  let { cursors, cookies, grandmas, id } = localState
+  let { cookies } = localState
 
 
   return (
     <>
       <h1>Cookie Clicker. Click the Cookie.</h1>
-      <h3>Cookies: {Math.floor(cookies)}</h3>
+      <h3>Cookies: {Math.floor(localState.cookies)}</h3>
       <h3>You are Making {currentTotalCPS} cookies per second.</h3>
       <h3>Click Strength: {clickStrength}</h3>
       <button className="cookie" onClick={() => handleClick()}><img className="cookie" src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" alt="cookie" /></button>
       <div className="save-container">
-        <Button className="save-btn" onClick={() => handleSave()}>SAVE</Button>
+        <Button
+          className="save-btn"
+          onClick={() => handleSave()}>
+          SAVE
+        </Button>
 
-        <Button className="save-btn">
+        <Button
+          className="save-btn"
+          onClick={() => { setAutoSave(!autoSave) }}>
           AutoSave is {autoSave ? 'ON' : 'OFF'}
         </Button>
       </div>
