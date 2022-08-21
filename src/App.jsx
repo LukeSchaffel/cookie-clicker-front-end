@@ -146,6 +146,7 @@ const App = () => {
         <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
         currentTotalCPS={currentTotalCPS}
         clickStrength={clickStrength}
+        user={user}
         />
         : null}
         </main>

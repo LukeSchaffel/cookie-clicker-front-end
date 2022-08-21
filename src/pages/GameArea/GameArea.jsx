@@ -6,10 +6,10 @@ import BuildingsContainer from "../../components/BuildingsContainer/BuildingsCon
 import Button from "react-bootstrap/Button";
 
 const GameArea = ({
-  buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength
+  buildingsData, localState, setLocalState, setBuildingsData, currentTotalCPS, clickStrength, user
 }) => {
 
-  const [autoSave, setAutoSave] = useState(true)
+  const [autoSave, setAutoSave] = useState(false)
 
   const handleClick = () => {
     setLocalState(localState => {
@@ -55,11 +55,10 @@ const GameArea = ({
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (autoSave) {
+      if (autoSave && localState._id !== undefined) {
         handleSave()
-        console.log('...30 second timer triggered');
       }
-    }, 30000)
+    }, 3000)
     return () => clearInterval(timer)
   }, [autoSave])
 

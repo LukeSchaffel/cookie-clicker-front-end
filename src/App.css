@@ -28,7 +28,9 @@ main {
   background-color: rgba(188, 117, 66, 0.67);
 }
 
-
+.nav {
+  background-color: rgba(188, 117, 66);
+}
 
 .upgrades-container ul {
   list-style: none;
@@ -39,8 +41,16 @@ main {
   margin: 10px 0;
 }
 
+.save-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
 .save-btn {
-  width: fit-content
+  width: fit-content;
+  margin: 1rem 1rem 0 0;
+  
 }
 
 h1 {
