@@ -17,15 +17,21 @@ const NavBar = ({ user, handleLogout }) => {
 
               <Nav.Link href="/" style={{ color: 'black' }}>Home</Nav.Link>
               {user ?
-                <Nav.Link onClick={handleLogout} style={{ color: 'black' }}>Log Out</Nav.Link>
+                <>
+                  <Nav.Link onClick={handleLogout} style={{ color: 'black' }}>Log Out</Nav.Link>
+                  <Nav.Link href="/changePassword">
+                    Change Password
+                  </Nav.Link>
+                </>
                 :
                 <>
                   <Nav.Link href="/login">
                     Log In
                   </Nav.Link>
-                  <Nav.Link href="/login">
-                    Log In
+                  <Nav.Link href="/signup">
+                    Sign Up
                   </Nav.Link>
+
                 </>
               }
 

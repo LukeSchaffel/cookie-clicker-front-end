@@ -1,5 +1,6 @@
 import Upgrade from "../Upgrade/Upgrade";
 import { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 const UpgradesContainer = ({ upgrades, handlePurchaseUpgrade, localState }) => {
   const [availableUpgrades, setAvailableUpgrades] = useState([])
@@ -29,7 +30,7 @@ const UpgradesContainer = ({ upgrades, handlePurchaseUpgrade, localState }) => {
         </header>
         {availableUpgrades.length > 0 ?
           <div className="available-upgrades">
-            <h3>Available Upgrades: </h3>
+            <h3>Available: </h3>
             <ul>
               {availableUpgrades.map((upgrade, idx) => (
                 <li key={idx}>
@@ -47,7 +48,7 @@ const UpgradesContainer = ({ upgrades, handlePurchaseUpgrade, localState }) => {
         {
           ownedUpgrades.length > 1 ?
         <div className="owned-upgrades">
-          <button onClick={() => setHiddenUpgrades(!hiddenUpgrades)}>My Upgrades:</button>
+          <Button onClick={() => setHiddenUpgrades(!hiddenUpgrades)}>My Upgrades:</Button>
           {!hiddenUpgrades ?
             <ul>
               {ownedUpgrades.map((upgrade, idx) => (

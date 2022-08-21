@@ -12,7 +12,7 @@ const Building = ({ building, handlePurchase, handlePurchaseUpgrade, localState 
         </header>
         <div className="info-div">
           <h4>Current Price : {building.currentPrice} Cookies</h4>
-        <Button variant='outline-success' onClick={() => { handlePurchase(building.name) }}> Purchase </Button>
+        <Button variant='success' onClick={() => { handlePurchase(building.name) }}> Purchase </Button>
 
         </div>
         <div>

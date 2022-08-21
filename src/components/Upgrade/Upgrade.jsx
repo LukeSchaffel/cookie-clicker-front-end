@@ -13,14 +13,14 @@ const Upgrade = ({ upgrade, handlePurchaseUpgrade }) => {
         <div>
           {available ? 
           <Button
-            variant='outline-success'
+            variant='success'
             onClick={() => handlePurchaseUpgrade(upgrade)}
             className="upgrade-btn">
             {upgrade.name} for {upgrade.basePrice} cookies
           </Button> 
           :
           <Button
-            variant='outline-danger'
+            variant='danger'
             
             className="upgrade-btn">
             {upgrade.name} for {upgrade.basePrice} cookies
