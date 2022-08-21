@@ -1,8 +1,13 @@
+
 main {
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.699);
+}
+
+.landing-div{
+  height: 100rem;
 }
 
 .cookie {

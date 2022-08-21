@@ -10,6 +10,7 @@ import * as authService from './services/authService'
 import GameArea from './pages/GameArea/GameArea'
 import { getProfileState } from './services/profileService'
 import { buildings } from './services/buildings'
+import WelcomePage from './pages/WelcomePage/WelcomePage'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -40,55 +41,55 @@ const App = () => {
     updateBuildingInfo()
   }, [localState])
 
- 
+
   //make cookies from buildings
   useEffect(() => {
     const building = buildingsData[0];
     const { baseCPS, } = building
-    
+
     const timer = setInterval(() => {
       if (localState) {
-          setLocalState(localState => {
-            return {
-              ...localState,
-              cookies: localState.cookies + 
+        setLocalState(localState => {
+          return {
+            ...localState,
+            cookies: localState.cookies +
               (buildingsData[0].currentCPS * buildingsData[0].owned) +
               (buildingsData[1].currentCPS * buildingsData[1].owned) +
-             (buildingsData[2].currentCPS * buildingsData[2].owned) +
-             (buildingsData[3].currentCPS * buildingsData[3].owned) +
-             (buildingsData[4].currentCPS * buildingsData[4].owned) +
-             (buildingsData[5].currentCPS * buildingsData[5].owned) +
-             (buildingsData[6].currentCPS * buildingsData[6].owned)
-            }
-          })
-        }
-      }, 1000)
-      return () => clearInterval(timer)
+              (buildingsData[2].currentCPS * buildingsData[2].owned) +
+              (buildingsData[3].currentCPS * buildingsData[3].owned) +
+              (buildingsData[4].currentCPS * buildingsData[4].owned) +
+              (buildingsData[5].currentCPS * buildingsData[5].owned) +
+              (buildingsData[6].currentCPS * buildingsData[6].owned)
+          }
+        })
+      }
+    }, 1000)
+    return () => clearInterval(timer)
   }, [localState])
 
 
 
   const updateBuildingInfo = () => {
-      let acc = 0
-      const newData = buildingsData.map((building) => {
-        const owned = localState[building.name] > 0 ? localState[building.name] : 0
-        building.currentPrice = owned > 0 ? Math.ceil(building.basePrice * Math.pow(1.5, owned)) : building.basePrice
-        building.upgrades.forEach((upgrade, i) => {
-          if (localState.upgrades?.includes(upgrade.name) && !upgrade.active) {
-            upgrade.owned = true
-            upgrade.effect()
-            upgrade.active = true
-            if (upgrade.modifyClickStrength) {
-              setClickStrength(clickStrength * 2)
-            }
+    let acc = 0
+    const newData = buildingsData.map((building) => {
+      const owned = localState[building.name] > 0 ? localState[building.name] : 0
+      building.currentPrice = owned > 0 ? Math.ceil(building.basePrice * Math.pow(1.5, owned)) : building.basePrice
+      building.upgrades.forEach((upgrade, i) => {
+        if (localState.upgrades?.includes(upgrade.name) && !upgrade.active) {
+          upgrade.owned = true
+          upgrade.effect()
+          upgrade.active = true
+          if (upgrade.modifyClickStrength) {
+            setClickStrength(clickStrength * 2)
           }
-        })
-        building.owned = owned
-        acc += building.currentCPS * owned
-        return building
+        }
       })
-      setCurrentTotalCPS(acc > 0 ? acc : 0)
-      setBuildingsData(newData)
+      building.owned = owned
+      acc += building.currentCPS * owned
+      return building
+    })
+    setCurrentTotalCPS(acc > 0 ? acc : 0)
+    setBuildingsData(newData)
   }
 
 
@@ -112,7 +113,7 @@ const App = () => {
 
 
 
- 
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -141,15 +142,19 @@ const App = () => {
           }
         />
       </Routes>
-      <main>
       {user ?
-        <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh} 
-        currentTotalCPS={currentTotalCPS}
-        clickStrength={clickStrength}
-        user={user}
-        />
-        : null}
+        <main>
+          <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh}
+            currentTotalCPS={currentTotalCPS}
+            clickStrength={clickStrength}
+            user={user}
+          />
         </main>
+        :
+        <main>
+          <WelcomePage />
+        </main>
+      }
     </>
   )
 }
