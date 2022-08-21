@@ -58,7 +58,7 @@ const GameArea = ({
       if (autoSave && localState._id !== undefined) {
         handleSave()
       }
-    }, 3000)
+    }, 10000)
     return () => clearInterval(timer)
   }, [autoSave])
 
