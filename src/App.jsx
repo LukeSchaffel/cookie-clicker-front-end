@@ -44,9 +44,6 @@ const App = () => {
 
   //make cookies from buildings
   useEffect(() => {
-    const building = buildingsData[0];
-    const { baseCPS, } = building
-
     const timer = setInterval(() => {
       if (localState) {
         setLocalState(localState => {
@@ -144,7 +141,8 @@ const App = () => {
       </Routes>
       {user ?
         <main>
-          <GameArea profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh}
+          <GameArea
+            profile={profileState} buildingsData={buildingsData} localState={localState} updateBuildingInfo={updateBuildingInfo} setBuildingsData={setBuildingsData} setLocalState={setLocalState} refresh={refresh}
             currentTotalCPS={currentTotalCPS}
             clickStrength={clickStrength}
             user={user}
@@ -152,7 +150,7 @@ const App = () => {
         </main>
         :
         <main>
-          
+
           <WelcomePage />
         </main>
       }
